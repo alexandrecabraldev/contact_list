@@ -2,9 +2,12 @@ import { Header } from "./Header";
 import { Form } from "./Form";
 import { ContainerApp } from "./Container/ContainerApp";
 import { Contact } from "./Contact";
+import { useSelector } from "react-redux";
+import { RootState } from "./Store/store";
 
 function App() {
 
+  const contactList = useSelector((state:RootState)=> state.contactList)
 
   return (
 
@@ -12,9 +15,18 @@ function App() {
       <Header/>
       <ContainerApp>
         <Form/>
-        <Contact/>
-        <Contact/>
-        <Contact/>
+
+        {
+          contactList.map((item)=>{
+            return (
+              <Contact 
+                name={item.name}
+                phone={item.phone}
+                email={item.email}
+              />
+            )
+          })
+        }
       </ContainerApp>
     </>
   
