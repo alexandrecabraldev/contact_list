@@ -32,14 +32,14 @@ export const ButtonContainer = styled.div`
     }
 `;
 
-export const Button = styled.button<{red?: boolean}>`
+export const Button = styled.button<{$red?: boolean}>`
 
     text-transform: uppercase;
     padding: 6px 8px;
     cursor: pointer;
     border-radius: 8px;
     border: 1px solid;
-    background-color: ${props=>props.red? '#C23616': '#E1B12C'};
+    background-color: ${props=>props.$red? '#C23616': '#E1B12C'};
     color: white;
 
     &:hover{

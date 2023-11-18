@@ -20,9 +20,16 @@ export const contactListSlice = createSlice({
         addContact: (state, action: PayloadAction<Contact>)=>{
             return [...state,action.payload]
 
-        }
+        },
+        delContact: (state, action: PayloadAction<string>)=>{
+            const listFiltered = state.filter((item)=>{
+                return item.name!==action.payload
+            })
+
+            return listFiltered
+        }  
     }
 })
 
-export const { addContact } = contactListSlice.actions
+export const { addContact, delContact } = contactListSlice.actions
 export default contactListSlice.reducer;

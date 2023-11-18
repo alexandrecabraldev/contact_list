@@ -20,6 +20,7 @@ function App() {
           contactList.map((item)=>{
             return (
               <Contact 
+                key={item.email}
                 name={item.name}
                 phone={item.phone}
                 email={item.email}
