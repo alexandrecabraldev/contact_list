@@ -46,3 +46,4 @@ export const Button = styled.button<{red?: boolean}>`
         opacity: 0.8;
     }
 `;
+

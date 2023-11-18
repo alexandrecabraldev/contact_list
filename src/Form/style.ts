@@ -15,6 +15,8 @@ export const FormInputs = styled.form`
         text-transform: uppercase;
         font-weight: bold;
         border: 1px solid gray;
+        background-color: #2980B9;
+        color: white;
         cursor: pointer;
     }
 
