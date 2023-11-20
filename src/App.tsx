@@ -17,10 +17,11 @@ function App() {
         <Form/>
 
         {
-          contactList.map((item)=>{
+          contactList.map((item,index)=>{
             return (
               <Contact 
                 key={item.email}
+                index={index}
                 name={item.name}
                 phone={item.phone}
                 email={item.email}
