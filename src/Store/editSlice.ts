@@ -2,7 +2,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 export interface ContactEdited {
     name:string,
-    phone: number,
+    phone: string,
     email: string,
     edit:boolean,
     index:number,
@@ -10,7 +10,7 @@ export interface ContactEdited {
 
 const initialState: ContactEdited={
     name:'',
-    phone:0,
+    phone:'',
     email:'',
     edit:false,
     index:-1,

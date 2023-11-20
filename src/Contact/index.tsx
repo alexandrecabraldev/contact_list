@@ -2,12 +2,12 @@ import { useDispatch } from "react-redux"
 import { Button, ButtonContainer, ContainerContact } from "./style"
 import { delContact } from "../Store/contactListSlice";
 import { editItem } from "../Store/editSlice";
-import { editContact } from "../Store/contactListSlice";
+import { updateContact } from "../Store/contactListSlice";
 
 export interface PropsContact {
     index:number,
     name:string,
-    phone: number,
+    phone: string,
     email: string,
 }
 
@@ -23,7 +23,8 @@ export function Contact(props: PropsContact){
             index:props.index,
         }
         dispatch(editItem(editItemArgument))
-        dispatch(editContact(editItemArgument))
+        dispatch(updateContact(editItemArgument))
+        // dispatch(addContact(editItemArgument))
     }
 
     return(

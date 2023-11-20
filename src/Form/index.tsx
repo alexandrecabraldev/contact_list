@@ -5,13 +5,14 @@ import { useDispatch, useSelector } from "react-redux"
 import { addContact } from "../Store/contactListSlice"
 import { useEffect } from "react"
 import { RootState } from "../Store/store"
+// import { resetEdit } from "../Store/editSlice"
 
 export function Form(){
 
     const dispatch = useDispatch()
     const edit = useSelector((state: RootState)=>state.edit)
 
-    const {register, handleSubmit, setValue,reset, watch}=useForm<PropsContact>()
+    const {register, handleSubmit, setValue,reset}=useForm<PropsContact>()
 
     const onSubmit:SubmitHandler<PropsContact> = ({name,email,phone}: PropsContact)=> {
 
@@ -27,6 +28,7 @@ export function Form(){
             phone,
         })
 
+        // dispatch(resetEdit())
         reset();
     }
     
@@ -36,14 +38,12 @@ export function Form(){
         setValue('phone', edit.phone)
     },[edit])
 
-    console.log(watch('name'))
-
     return(
         <FormInputs onSubmit={handleSubmit(onSubmit)}>
             <input type="text" placeholder="Nome" {...register('name', {required:true})}/>
             <input type="email" placeholder="E-mail" {...register('email', {required:true})}/>
             <input type="tel" placeholder="Telefone" {...register('phone', {required:true})}/>
-            <button type='submit'>{edit.edit?'Editar':'Adicionar'}</button>
+            <button type='submit'>{edit.edit ? 'Editar':'Adicionar'}</button>
         </FormInputs>
     )
 }

@@ -1,15 +1,17 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 export interface Contact {
+    index?:number,
     name:string,
-    phone: number,
+    phone: string,
     email: string,
     edit:boolean,
 }
 
 const user ={
+    index: 0,
     name: 'John',
-    phone: 12345678900,
+    phone: '12345678900',
     email: 'john@example.com',
     edit:false,
 }
@@ -22,10 +24,8 @@ export const contactListSlice = createSlice({
         addContact: (state, action: PayloadAction<Contact>)=>{
             const index = state.findIndex((item)=>{
                 return item.edit
-                
             })
 
-            console.log(index)
             if(index===-1){
                 return [...state,action.payload]
             }else{
@@ -35,9 +35,8 @@ export const contactListSlice = createSlice({
                 state[index].edit=false
                 return state;
             }
-
-        
         },
+
         delContact: (state, action: PayloadAction<string>)=>{
             const listFiltered = state.filter((item)=>{
                 return item.name!==action.payload
@@ -45,19 +44,15 @@ export const contactListSlice = createSlice({
 
             return listFiltered
         },
-        editContact:(state, action:PayloadAction<Contact>)=>{
-            state.map((item)=>{
-                if(item.name===action.payload.name){
-                    // item.name=action.payload.name
-                    // item.email=action.payload.email
-                    // item.phone=action.payload.phone
-                    item.edit=action.payload.edit
-                }
-            })
+        updateContact:(state, action:PayloadAction<Contact>)=>{
+            
+            if(action.payload.index !== undefined && action.payload.index>=0){
+                state[action.payload.index] = action.payload
+            }
             return state;
         }
     }
 })
 
-export const { addContact, delContact,editContact } = contactListSlice.actions
+export const { addContact, delContact, updateContact } = contactListSlice.actions
 export default contactListSlice.reducer;
