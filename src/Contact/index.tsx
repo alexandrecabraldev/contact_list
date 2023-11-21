@@ -24,7 +24,6 @@ export function Contact(props: PropsContact){
         }
         dispatch(editItem(editItemArgument))
         dispatch(updateContact(editItemArgument))
-        // dispatch(addContact(editItemArgument))
     }
 
     return(

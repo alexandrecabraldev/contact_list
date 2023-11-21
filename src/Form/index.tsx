@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { addContact } from "../Store/contactListSlice"
 import { useEffect } from "react"
 import { RootState } from "../Store/store"
-// import { resetEdit } from "../Store/editSlice"
+import { resetEdit } from "../Store/editSlice"
 
 export function Form(){
 
@@ -28,15 +28,15 @@ export function Form(){
             phone,
         })
 
-        // dispatch(resetEdit())
         reset();
+        dispatch(resetEdit())
     }
     
     useEffect(()=>{
         setValue('name',edit.name)
         setValue('email', edit.email)
         setValue('phone', edit.phone)
-    },[edit])
+    },[edit, setValue])
 
     return(
         <FormInputs onSubmit={handleSubmit(onSubmit)}>

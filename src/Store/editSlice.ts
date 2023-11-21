@@ -29,6 +29,9 @@ export const editSlice = createSlice({
             return state;
         },
         resetEdit:(state)=>{
+            state.name='';
+            state.email='';
+            state.phone='';
             state.edit=false;
             return state;
         }  
